@@ -1,0 +1,29 @@
+---
+title: "examples"
+author: "Victoria Cutler"
+date: "2022-08-12"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(palmerpenguins)
+library(tidyverse)
+```
+
+this could help in pivot longer when the year is the column name so then they'd be transformed to a column of characters, but need numeric to plot
+```{r}
+penguins_year_chr <- penguins |> 
+  mutate(year = as.character(year))
+
+penguins_year_num <- penguins_year_chr |> 
+  mutate(year = as.numeric(year))
+
+```
+
+if we only want adelie and chinstrap:
+```{r}
+penguins_ad_ch <- penguins_year_num |> 
+  filter(species %in% c("Adelie","Chinstrap")) # in operator looks in the row to see if either of these is in 
+```
+
